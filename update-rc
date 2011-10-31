@@ -1,0 +1,7 @@
+#! /bin/sh
+
+if [ "x$MSYSTEM" = "xMINGW32" ]; then
+	cp -rf .bashrc ~/.bashrc
+else
+	ln -s -f .bashrc ~/.bashrc
+fi
