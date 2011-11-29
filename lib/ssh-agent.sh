@@ -8,7 +8,6 @@ function start_agent {
     echo succeeded
     chmod 600 "$SSH_ENV"
     . "$SSH_ENV" > /dev/null
-    ssh-add
 }
 
 # test for identities
@@ -46,6 +45,16 @@ function check_agent {
 	fi
 }
 
+function add_agent {
+	if [ -z "$1" ]; then
+		id="id_rsa"
+	else
+		id="$1"
+	fi
+
+	check_agent
+	ssh-add ~/.ssh/$id
+}
 # export SSH_AUTH_SOCK=/tmp/.ssh-socket
 # ssh-add -l 2>&1 >/dev/null
 # if [ $? = 2 ]; then
