@@ -36,4 +36,6 @@ alias G='git'
 
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
 
+check_agent
+
 echo Bash Init complete!
