@@ -10,12 +10,16 @@ function start_agent {
     . "$SSH_ENV" > /dev/null
 }
 
+function kill_agent {
+   kill $SSH_AGENT_PID
+}
+
 # test for identities
 function test_identities {
     # test whether standard identities have been added to the agent already
     ssh-add -l | grep "The agent has no identities" > /dev/null
     if [ $? -eq 0 ]; then
-        ssh-add
+		echo "The agent has no identities, please use add_agent add one."
         # $SSH_AUTH_SOCK broken so we start a new proper agent
         if [ $? -eq 2 ];then
             start_agent
@@ -55,15 +59,3 @@ function add_agent {
 	check_agent
 	ssh-add ~/.ssh/$id
 }
-# export SSH_AUTH_SOCK=/tmp/.ssh-socket
-# ssh-add -l 2>&1 >/dev/null
-# if [ $? = 2 ]; then
-#    # Exit status 2 means couldn't connect to ssh-agent; start one now
-#    ssh-agent -a $SSH_AUTH_SOCK >/tmp/.ssh-script
-#    . /tmp/.ssh-script
-#    echo $SSH_AGENT_PID >/tmp/.ssh-agent-pid
-# fi
-# function kill-agent {
-#    pid=`cat /tmp/.ssh-agent-pid`
-#    kill $pid
-# }
