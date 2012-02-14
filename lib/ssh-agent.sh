@@ -19,7 +19,7 @@ function test_identities {
     # test whether standard identities have been added to the agent already
     ssh-add -l | grep "The agent has no identities" > /dev/null
     if [ $? -eq 0 ]; then
-		echo "The agent has no identities, please use add_agent add one."
+#		echo "The agent has no identities, please use add_agent add one."
         # $SSH_AUTH_SOCK broken so we start a new proper agent
         if [ $? -eq 2 ];then
             start_agent
