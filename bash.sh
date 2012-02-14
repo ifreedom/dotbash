@@ -12,6 +12,7 @@ for f in ~/dotbash/lib/*.sh; do
 		. $f
 	fi
 done
+. ~/dotbash/extra/add-agent-completion.bash
 
 # fix chinese dir
 alias l='/bin/ls --show-control-chars --color=tty'
@@ -25,7 +26,7 @@ export LIBRARY_PATH=/usr/lib:/mingw/lib
 # if [ -z "$PKG_CONFIG" ]; then
 #   export PKG_CONFIG=/path/to/pkg-config.exe
 # fi
- 
+
 if [ -z "$PKG_CONFIG_PATH" ]; then
   export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/pkgconfig:/mingw/lib/pkgconfig
 fi
